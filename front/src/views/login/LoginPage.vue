@@ -68,12 +68,12 @@ export default {
           let _this = this;
           // 使用 axios 将登录信息发送到后端
           this.axios({
-            url: "/api/user/login",               // 请求地址
-            method: "post",                       // 请求方法
-            headers: {                            // 请求头
+            url: "/api/user/login",
+            method: "post",
+            headers: {
               "Content-Type": "application/json",
             },
-            params: {                             // 请求参数
+            params: {
               uname: _this.ruleForm.uname,
               password: _this.ruleForm.password,
             },
@@ -82,7 +82,7 @@ export default {
               // 将用户信息存储到sessionStorage中
               sessionStorage.setItem("userInfo", JSON.stringify(res.data.data));
               // 跳转页面到首页
-              this.$router.push('/home');
+              this.$router.push('/chat');
               // 显示后端响应的成功信息
               this.$message({
                 message: res.data.msg,

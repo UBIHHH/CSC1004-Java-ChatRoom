@@ -1,8 +1,9 @@
 <template>
   <div>
     <h2>欢迎{{ user.uname }}！您的 uid 为{{ user.uid }}</h2>
-    <el-button @click="logout"> 登出 </el-button>
+      <el-button type="primary" @click="logout">退出登录</el-button>
   </div>
+
 </template>
 
 <script>
