@@ -10,10 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * @author DELL
- * @date 2020/5/20 21:22
- */
 @Service
 @Transactional
 public class MessageServiceImpl implements MessageService {

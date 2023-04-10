@@ -9,11 +9,6 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
 import java.text.SimpleDateFormat;
-
-/**
- * @author DELL
- * @date 2020/5/5 20:54
- */
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
     //定义一个channel组，管理所有的channel

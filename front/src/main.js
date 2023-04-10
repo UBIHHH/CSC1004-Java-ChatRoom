@@ -12,7 +12,6 @@ Vue.config.productionTip = false
 
 // 使用插件
 Vue.use(ElementUI) // element ui 插件
-Vue.use(Jwchat)
 Vue.use(VueRouter) // 路由插件
 Vue.use(VueAxios, axios) // 使用 axios 插件
 

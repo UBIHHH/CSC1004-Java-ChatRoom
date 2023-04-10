@@ -7,11 +7,6 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-
-/**
- * @author DELL
- * @date 2020/5/20 19:18
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

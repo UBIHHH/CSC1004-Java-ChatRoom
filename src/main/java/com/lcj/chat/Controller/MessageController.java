@@ -4,15 +4,9 @@ import com.lcj.chat.Entity.Message;
 import com.lcj.chat.Service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-/**
- * @author DELL
- * @date 2020/5/20 18:43
- */
 @RestController
 @CrossOrigin
 @RequestMapping("message")

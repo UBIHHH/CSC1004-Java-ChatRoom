@@ -18,10 +18,6 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/**
- * @author DELL
- * @date 2020/5/20 18:14
- */
 @Component
 public class WebSocketServer {
 
