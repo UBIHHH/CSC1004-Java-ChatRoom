@@ -2,7 +2,7 @@ package com.lcj.chat.Entity;
 
 import javax.persistence.*;
 
-@Table(name = "user")
+@Table(name = "user") //说明此实体类对应于数据库的user表
 @Entity
 public class User {
 
@@ -15,6 +15,24 @@ public class User {
 
     // 密码String
     private String password;
+    private String email;
+    private String address;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public long getUid() {
         return uid;

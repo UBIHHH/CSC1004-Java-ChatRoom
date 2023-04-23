@@ -1,14 +1,14 @@
 package com.lcj.chat.Service.Implement;
 
-import com.lcj.chat.Entity.User;
 import com.lcj.chat.DAO.UserDao;
+import com.lcj.chat.Entity.User;
 import com.lcj.chat.Service.UserService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Resource
+    @Resource //实例化UserDao对象
     private UserDao userDao;
 
     @Override
@@ -23,17 +23,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registService(User user) {
+    public User registerService(User user) {
         //用户名已存在
         if(userDao.findByUname(user.getUname())!=null){
-            // 无法注册
             return null;
         }else{
             //返回创建好的用户对象
             User newUser = userDao.save(user);
-            if(newUser != null){
-                newUser.setPassword("");
-            }
+            newUser.setPassword("");
             return newUser;
         }
     }

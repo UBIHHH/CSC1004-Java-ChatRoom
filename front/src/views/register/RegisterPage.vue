@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card class="box-card">
-      <h2>注册</h2>
+      <h2>Register</h2>
       <el-form
           :model="ruleForm"
           status-icon
@@ -11,30 +11,36 @@
           label-width="80px"
           class="demo-ruleForm"
       >
-        <el-form-item label="用户名" prop="uname">
+        <el-form-item label="Username" prop="uname">
           <el-input v-model="ruleForm.uname"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="pass">
+        <el-form-item label="Password" prop="pass">
           <el-input
               type="password"
               v-model="ruleForm.pass"
               autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="password">
+        <el-form-item label="Confirm Password" prop="password">
           <el-input
               type="password"
               v-model="ruleForm.password"
               autocomplete="off"
           ></el-input>
         </el-form-item>
+        <el-form-item label="email" prop="email">
+              <el-input v-model="ruleForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="address" prop="address">
+              <el-input v-model="ruleForm.address"></el-input>
+        </el-form-item>
       </el-form>
       <div class="btnGroup">
         <el-button type="primary" @click="submitForm('ruleForm')"  v-loading="loading"
-        >提交</el-button
+        >Submit</el-button
         >
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
-        <el-button @click="goBack">返回</el-button>
+        <el-button @click="resetForm('ruleForm')">reset</el-button>
+        <el-button @click="goBack">back</el-button>
       </div>
     </el-card>
   </div>
@@ -45,7 +51,7 @@ export default {
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入密码"));
+        callback(new Error("please input password"));
       } else {
         if (this.ruleForm.checkPass !== "") {
           this.$refs.ruleForm.validateField("checkPass");
@@ -55,9 +61,9 @@ export default {
     };
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请再次输入密码"));
+        callback(new Error("please input password again"));
       } else if (value !== this.ruleForm.pass) {
-        callback(new Error("两次输入密码不一致!"));
+        callback(new Error("two passwords are inconsistent!"));
       } else {
         callback();
       }
@@ -70,7 +76,7 @@ export default {
       },
       rules: {
         uname: [
-          { required: true, message: "用户名不能为空！", trigger: "blur" },
+          { required: true, message: "username can't be empty", trigger: "blur" },
         ],
         pass: [{ required: true, validator: validatePass, trigger: "blur" }],
         password: [
@@ -83,38 +89,38 @@ export default {
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
-        this.loading = true;  // 提交按钮显示加载动画
+        this.loading = true;
         if (valid) {
           let _this = this;
-          this.axios({     // axios 向后端发起请求
-            url: "/api/user/register",  // 请求地址
-            method: "post",             // 请求方法
-            headers: {                  // 请求头
+          this.axios({
+            url: "/api/user/register",
+            method: "post",
+            headers: {
               "Content-Type": "application/json",
             },
             data: { // 请求参数，为 data，与登录的 params 不太一样
               uname: _this.ruleForm.uname,
               password: _this.ruleForm.password,
+              email: _this.ruleForm.email,
+              address: _this.ruleForm.address,
             },
-          }).then((res) => { // 当收到后端的响应时执行该括号内的代码，res 为响应信息，也就是后端返回的信息
-            if (res.data.code === '0') {  // 当响应的编码为 0 时，说明注册成功
+          }).then((res) => {
+            if (res.data.code === '0') {
               // 显示后端响应的成功信息
               this.$message({
                 message: res.data.msg,
                 type: "success",
               });
-            }else{  // 当响应的编码不为 0 时，说明注册失败
-              // 显示后端响应的失败信息
+            }else{
               this.$message({
                 message: res.data.msg,
                 type: "warning",
               });
             }
-            // 不管响应成功还是失败，收到后端响应的消息后就不再让登录按钮显示加载动画了
             _this.loading = false;
             console.log(res);
           });
-        } else { // 如果账号或密码有一个没填，就直接提示必填，不向后端请求
+        } else {
           console.log("error submit!!");
           this.loading = false;
           return false;
@@ -132,12 +138,11 @@ export default {
 </script>
 
 <style scoped>
-/* 设置登录面板居中，宽度为400px */
 .box-card {
   margin: auto auto;
   width: 400px;
 }
-/* 设置登录面板中的表单居中 */
+
 .login-from {
   margin: auto auto;
 }

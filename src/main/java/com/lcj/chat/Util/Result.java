@@ -1,5 +1,5 @@
 package com.lcj.chat.Util;
-//与前端交互的都是result对象
+//发给前端的都是Result对象（泛型）
 public class Result<T> {
     private String code;
     private String msg;

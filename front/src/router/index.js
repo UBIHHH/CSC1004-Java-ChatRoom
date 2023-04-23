@@ -1,12 +1,8 @@
-// 此文件专门负责项目的路由
-
+//路由
 import VueRouter from "vue-router"
-
-// 引入组件
 import Login from '../views/login/LoginPage.vue'
 import Register from '../views/register/RegisterPage.vue'
-import Home from '../views/home/HomePage.vue'
-import Chat from '../components/Room.vue'
+import Chat from '../views/home/ChatPage.vue'
 import { Message } from "element-ui";
 
 // 创建并暴露一个路由器
@@ -18,20 +14,16 @@ const router = new VueRouter({
             redirect: '/login'  // 重定向
         },
         {
-            path: '/login',     // 路径
-            component: Login    // 跳转到的组件
+            path: '/login',
+            component: Login
         },
         {
-            path: '/register',     // 路径
-            component: Register    // 跳转到的组件
+            path: '/register',
+            component: Register
         },
         {
-            path: '/home',     // 路径
-            component: Home    // 跳转到的组件
-        },
-        {
-            path: '/chat',     // 路径
-            component: Chat    // 跳转到的组件
+            path: '/chat',
+            component: Chat
         }
     ]
 })
@@ -43,7 +35,7 @@ router.beforeEach((to, from, next) => {
     if (to.path !== '/login' && to.path !== '/register' && !isAuthenticated) {
         next({ path: '/login' })
         Message({
-            message: '请先登录！',
+            message: 'Please Login first！',
             type: "warning",
         });
     } else next()
