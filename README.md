@@ -5,12 +5,14 @@
 1. Multi-Client Chat
 2. Login and Registration System
 3. GUI
+4. Web Application
 
 ## 2. How do I Implement them
 
 1. For multi-client chat, I use websocket provided by Java and Vue. I write two classes Websocket Config and Controller to implement this.
 2. For login and registration system, first, I use JPA provided by Spring Boot to access MySQL. Second, I use POST to send user's data from front-end to back end. Third, in the front-end, I use axios provided by Vue to post data.
 3. for GUI, I use some components of Element UI (https://element.eleme.cn/#/zh-CN).
+4. for Web, I use Spring Boot as back-end and Vue as front-end.
 
 ## 3. How to run my code
 
